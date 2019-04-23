@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "allowUnreachableCode": false,
+    "noImplicitAny": false,
+    "allowUnusedLabels": false,
+    "module": "commonjs",
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "noUnusedParameters": true,
+    "resolveJsonModule": true
+  },
+  "exclude": ["node_modules"]
+}
