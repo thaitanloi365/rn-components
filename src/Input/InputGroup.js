@@ -1,9 +1,13 @@
 // @ts-nocheck
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, TextInputProps } from "react-native";
 import TextInput from "./TextInput";
 
 class InputGroup extends React.Component {
+  constructor(props) {
+    super(props)
+    this.inputRefs = []
+  }
   onInputSubmmitEditing = index => {
     const length = this.inputRefs.length;
 
