@@ -2,9 +2,9 @@ import React from "react";
 import { StyleSheet, Platform } from "react-native";
 import Touchable from "../Touchable/Touchable";
 import Text from "../Text/Text";
-import Assets from "../Assets";
+
 /**
- * @typedef {import("rn-components-base").ButtonProps} Props
+ * @typedef {import("rn-components").ButtonProps} Props
  * @extends {React.Component<Props>}
  */
 class Button extends React.Component {
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: Assets.colors.primary,
+    backgroundColor: "#007aff",
     borderRadius: 4
   }
 });

@@ -8,7 +8,7 @@ import renderNode from "../Utils/RenderNode";
 const headerHeight = Device.getHeaderHeight();
 /**
  *
- * @param {import("rn-components-base").HeaderProps} props
+ * @param {import("rn-components").HeaderProps} props
  */
 const Header = props => {
   const {

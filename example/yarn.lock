@@ -5228,6 +5228,12 @@ rimraf@~2.2.6:
 
 rn-components-base@../:
   version "1.0.0"
+  dependencies:
+    rn-notifier "https://github.com/thaitanloi365/rn-notifier.git"
+
+"rn-notifier@https://github.com/thaitanloi365/rn-notifier.git":
+  version "1.0.0"
+  resolved "https://github.com/thaitanloi365/rn-notifier.git#4323f33dcb25587e6c3ff6a7bf327d8ff0b5221a"
 
 rsvp@^3.3.3:
   version "3.6.2"

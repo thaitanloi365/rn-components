@@ -7,7 +7,8 @@
     "jsx": "react",
     "allowSyntheticDefaultImports": true,
     "noUnusedParameters": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "strictNullChecks": false
   },
   "exclude": ["node_modules"]
 }

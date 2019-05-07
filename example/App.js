@@ -6,14 +6,10 @@ import {
   Col,
   StyleSheet,
   Text,
-  CheckBox,
   Header,
-  MenuCheckBox,
-  Overlay,
   Button,
-  Toast
-} from "rn-components-base";
-
+} from "rn-components";
+import { Toast, Overlay } from "rn-notifier";
 const instructions = Platform.select({
   ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
   android: "Double tap R on your keyboard to reload,\n" + "Shake or press menu button for dev menu"
@@ -56,80 +52,7 @@ export default class App extends Component {
             <Text style={styles.instructions} text={instructions} />
           </Col>
 
-          <Col style={{ backgroundColor: "#fff" }} alignHorizontal="center">
-            <CheckBox
-              onStateChanged={checked => console.log("checked", checked)}
-              checked={false}
-              text="Check box 1"
-            />
-            <CheckBox
-              onStateChanged={checked => console.log("checked", checked)}
-              checked
-              text="Check box 2"
-            />
-            <CheckBox
-              onStateChanged={checked => console.log("checked", checked)}
-              checked
-              text="Check box 3"
-            />
-            <CheckBox
-              onStateChanged={checked => console.log("checked", checked)}
-              checked={false}
-              text="Check box 4"
-            />
-          </Col>
 
-          <Col alignHorizontal="center" style={{ backgroundColor: "#eee" }}>
-            <Text text="Check box with 2 colums" />
-            <MenuCheckBox numCols={2}>
-              <CheckBox
-                onStateChanged={checked => console.log("checked", checked)}
-                checked={false}
-                text="Check box 1"
-              />
-              <CheckBox
-                onStateChanged={checked => console.log("checked", checked)}
-                checked
-                text="Check box 2"
-              />
-              <CheckBox
-                onStateChanged={checked => console.log("checked", checked)}
-                checked
-                text="Check box 3"
-              />
-              <CheckBox
-                onStateChanged={checked => console.log("checked", checked)}
-                checked={false}
-                text="Check box 4"
-              />
-            </MenuCheckBox>
-          </Col>
-
-          <Col alignHorizontal="center" style={{ backgroundColor: "#fff" }}>
-            <Text text="Multiple Check box " />
-            <MenuCheckBox multipleSelect>
-              <CheckBox
-                onStateChanged={checked => console.log("checked", checked)}
-                checked={false}
-                text="Check box 1"
-              />
-              <CheckBox
-                onStateChanged={checked => console.log("checked", checked)}
-                checked
-                text="Check box 2"
-              />
-              <CheckBox
-                onStateChanged={checked => console.log("checked", checked)}
-                checked
-                text="Check box 3"
-              />
-              <CheckBox
-                onStateChanged={checked => console.log("checked", checked)}
-                checked={false}
-                text="Check box 4"
-              />
-            </MenuCheckBox>
-          </Col>
           <Col alignHorizontal="center">
             <Button
               style={{ marginVertical: 6 }}

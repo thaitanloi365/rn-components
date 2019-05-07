@@ -4,7 +4,7 @@ import { View, StyleSheet } from "react-native";
 
 /**
  *
- * @param {import('rn-components-base').ColProps} props
+ * @param {import('rn-components').ColProps} props
  */
 const Column = props => {
   const { children, flex, style, alignHorizontal, alignVertical, alignSelf, onPress } = props;

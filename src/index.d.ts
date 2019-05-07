@@ -1,4 +1,4 @@
-declare module "rn-components-base" {
+declare module "rn-components" {
   import * as React from "react";
   import {
     ViewProps,
@@ -132,20 +132,6 @@ declare module "rn-components-base" {
     children?: React.ReactChild
   }
 
-  type ToastMapTypes = {
-    [key in ToastType]: {
-      source: ImageSourcePropType;
-      color: string;
-    }
-  };
-
-  type ToastType = "Info" | "Success" | "Error" | "Warn" | "Error";
-
-  interface ToastProps extends ViewProps {
-    typeProps?: ToastMapTypes;
-    minmumHeightToClose?: number;
-  }
-
   type TextInputValidateType = "none" | "empty" | "length" | "email" | "phone" | "regex";
 
   type InputGroupValidateForm = Array<{
@@ -167,11 +153,6 @@ declare module "rn-components-base" {
     onInputSubmit?: (validateForm?: InputGroupValidateForm) => void;
     spacing?: number;
   };
-
-  interface MaterialTextInputProps extends TextInputProps {
-    activeColor?: string;
-    placeholderDeactiveColor?: string;
-  }
 
   interface TextInputProps extends TextInputExtraProps {
     underlineColor?: string;
@@ -195,31 +176,6 @@ declare module "rn-components-base" {
     rasied?: boolean;
     text?: React.ReactText;
     textStyle?: StyleProp<TextStyle>;
-  }
-
-  interface CheckBoxProps extends ViewProps {
-    checked?: boolean;
-    onPress?: () => void;
-    onStateChanged?: (checked: boolean) => void;
-    activeTintColor?: string;
-    activeImageSource?: ImageSourcePropType;
-    activeImageStyle?: StyleProp<ImageStyle>;
-    deactiveTintColor?: string;
-    deactiveImageSource?: ImageSourcePropType;
-    deactiveImageStyle?: StyleProp<ImageStyle>;
-    text?: string;
-    textPosition?: "left" | "right";
-    activeTextStyle?: StyleProp<TextStyle>;
-    deactiveTextStyle?: StyleProp<TextStyle>;
-  }
-
-  interface MenuCheckBoxProps extends ViewProps {
-    children: React.ReactElement<CheckBoxProps>[];
-    numCols?: number;
-    multipleSelect?: boolean;
-    initialSelectedIndex?: number;
-    onItemSelected?: (index: number) => void;
-    onItemsSelected?: (selectedItems: Array<{ index: number; checked: boolean }>) => void;
   }
 
   interface IconProps extends ViewProps {
@@ -250,12 +206,6 @@ declare module "rn-components-base" {
     export const hairlineWidth: number;
   }
 
-  export class Overlay extends React.Component<OverlayProps, any> {
-    show(onShow?: () => void): void;
-
-    hide(onHide?: () => void): void;
-  }
-
   export class ScrollView extends React.Component<ScrollViewProps, any> {
     scrollToInput(): void;
   }
@@ -282,22 +232,7 @@ declare module "rn-components-base" {
 
   export class Text extends React.Component<TextProps, any> {}
 
-  export class Toast extends React.Component<ToastProps, any> {
-    show(
-      title: string,
-      message: string,
-      type: ToastType,
-      duration: number,
-      activeStatusBarType: StatusBarStyle,
-      deactiveStatusBarType: StatusBarStyle
-    ): void;
-  }
-
   export class Button extends React.Component<ButtonProps, any> {}
-
-  export class CheckBox extends React.Component<CheckBoxProps, any> {}
-
-  export class MenuCheckBox extends React.Component<MenuCheckBoxProps, any> {}
 
   export class Header extends React.Component<HeaderProps, any> {}
 }

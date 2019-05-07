@@ -4,7 +4,7 @@ import { View, StyleSheet } from "react-native";
 
 /**
  *
- * @param {import('rn-components-base').RowProps} props
+ * @param {import('rn-components').RowProps} props
  */
 const Row = props => {
   const { children, flex, style, alignHorizontal, alignVertical, alignSelf, onPress } = props;
