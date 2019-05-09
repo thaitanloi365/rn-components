@@ -230,4 +230,6 @@ declare module "rn-components" {
   export class Header extends React.Component<HeaderProps, any> {}
 
   export class Icon extends React.Component<IconProps, any> {}
+
+  export class StatusBar extends React.Component<StatusBarProps, any> {}
 }
