@@ -13,9 +13,15 @@ const TouchableComponent = props => {
   return <TouchableOpacity {...other}>{children}</TouchableOpacity>;
 };
 
+/**
+ * @typedef {import("rn-components").TouchableProps} Props
+ * @extends {React.Component<Props>}
+ */
+
 class Touchable extends React.Component {
   static defaultProps = {
     activeOpacity: 0.5,
+    boundedRipple: false,
     linearProps: {
       start: { x: 0, y: 0.5 },
       end: { x: 1, y: 0.5 },
@@ -34,6 +40,7 @@ class Touchable extends React.Component {
       linearProps: lnProps,
       contentStyle,
       children,
+      boundedRipple,
       ...other
     } = this.props;
 
@@ -41,7 +48,7 @@ class Touchable extends React.Component {
 
     const background = isAndroid
       ? version >= 21
-        ? bg || TouchableNativeFeedback.Ripple("ThemeAttrAndroid", true)
+        ? bg || TouchableNativeFeedback.Ripple("ThemeAttrAndroid", !boundedRipple)
         : bg || TouchableNativeFeedback.SelectableBackground()
       : null;
 

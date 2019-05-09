@@ -4,8 +4,9 @@ const { width, height } = Dimensions.get("window");
 
 const [shortDimension, longDimension] = width < height ? [width, height] : [height, width];
 
-const _baseWidth = 375;
-const _baseHeight = 812;
+let _baseWidth = 375;
+let _baseHeight = 812;
+
 const hs = shortDimension / _baseWidth;
 const vs = longDimension / _baseHeight;
 
@@ -28,9 +29,7 @@ function getScreenSize() {
 }
 
 function isIphoneX() {
-  return (
-    Platform.OS === "ios" && (height === 812 || width === 812 || (height === 896 || width === 896))
-  );
+  return Platform.OS === "ios" && (height === 812 || width === 812 || (height === 896 || width === 896));
 }
 
 function ifIphoneX(iphoneXStyle, regularStyle) {
@@ -70,6 +69,12 @@ function getStatusBarStyle() {
   }
   return null;
 }
+
+function setBaseSize(width, height) {
+  _baseWidth = width;
+  _baseHeight = height;
+}
+
 export default {
   getScreenSize,
   isAndroid,
@@ -83,5 +88,6 @@ export default {
   deviceType,
   hs,
   vs,
-  getStatusBarStyle
+  getStatusBarStyle,
+  setBaseSize
 };

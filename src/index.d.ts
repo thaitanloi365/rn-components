@@ -53,6 +53,7 @@ declare module "rn-components" {
     ViewComponent?: React.ComponentClass<any>;
     linearProps?: LinearProps;
     contentStyle?: ViewStyle;
+    boundedRipple?: boolean;
   }
 
   interface ColProps extends ViewProps {
@@ -61,13 +62,7 @@ declare module "rn-components" {
     children?: React.ReactElement[] | React.ReactNode;
     alignSelf?: "auto" | FlexAlignType;
     alignHorizontal?: FlexAlignType;
-    alignVertical?:
-      | "flex-start"
-      | "flex-end"
-      | "center"
-      | "space-between"
-      | "space-around"
-      | "space-evenly";
+    alignVertical?: "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "space-evenly";
   }
 
   interface RowProps extends ViewProps {
@@ -76,13 +71,7 @@ declare module "rn-components" {
     children?: React.ReactElement[] | React.ReactNode;
     alignSelf?: "auto" | FlexAlignType;
     alignVertical?: FlexAlignType;
-    alignHorizontal?:
-      | "flex-start"
-      | "flex-end"
-      | "center"
-      | "space-between"
-      | "space-around"
-      | "space-evenly";
+    alignHorizontal?: "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "space-evenly";
   }
 
   interface GridProps extends ViewProps {
@@ -129,7 +118,7 @@ declare module "rn-components" {
     rightContainerStyle?: StyleProp<ViewStyle>;
     backgroundColor?: string;
     headerStyle?: StyleProp<ViewStyle>;
-    children?: React.ReactChild
+    children?: React.ReactChild;
   }
 
   type TextInputValidateType = "none" | "empty" | "length" | "email" | "phone" | "regex";
@@ -182,6 +171,7 @@ declare module "rn-components" {
     size?: number;
     iconSource: ImageSourcePropType;
     iconStyle?: StyleProp<ImageStyle>;
+    iconContainerStyle?: StyleProp<ViewStyle>;
     disabled?: boolean;
     onPress?: () => void;
   }
@@ -207,7 +197,8 @@ declare module "rn-components" {
   }
 
   export class ScrollView extends React.Component<ScrollViewProps, any> {
-    scrollToInput(): void;
+    scrollToNode(node, offset?: number): void;
+    scrollToCurrentInput(): void;
   }
 
   export class Device {
@@ -228,6 +219,8 @@ declare module "rn-components" {
     deviceType(): DeviceType;
 
     getStatusBarStyle(): StatusBarStyle | null;
+
+    setBaseSize(width: number, height: number): void;
   }
 
   export class Text extends React.Component<TextProps, any> {}
@@ -235,4 +228,6 @@ declare module "rn-components" {
   export class Button extends React.Component<ButtonProps, any> {}
 
   export class Header extends React.Component<HeaderProps, any> {}
+
+  export class Icon extends React.Component<IconProps, any> {}
 }

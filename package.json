@@ -1,11 +1,11 @@
 {
-  "name": "rn-components-base",
+  "name": "rn-components",
   "version": "1.0.0",
   "description": "React native components base",
   "main": "src/index.js",
   "types": "src/index.d.ts",
   "typings": "src/index.d.ts",
-  "repository": "https://gitlab.com/thaitanloi/rn-components-base",
+  "repository": "https://gitlab.com/thaitanloi/rn-components",
   "author": "Loi",
   "license": "MIT",
   "devDependencies": {

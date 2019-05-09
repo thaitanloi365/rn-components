@@ -1,7 +1,6 @@
 import React from "react";
 import { StatusBar as RNStatusBar, View } from "react-native";
 import Device from "../Utils/Device";
-import Assets from "../Assets";
 
 const statusBarHeight = Device.getStatusBarHeight(true);
 
@@ -43,13 +42,19 @@ const StatusBar = props => {
     );
   }
 
-  return <RNStatusBar barStyle={barStyle} backgroundColor={backgroundColor} animated={animated} />;
+  return (
+    <RNStatusBar
+      barStyle={barStyle}
+      backgroundColor={backgroundColor}
+      animated={animated}
+    />
+  );
 };
 
 StatusBar.defaultProps = {
   translucent: true,
-  backgroundColor: Assets.colors.primary,
-  barStyle: "light-content",
+  backgroundColor: "white",
+  barStyle: "dark-content",
   animated: true
 };
 

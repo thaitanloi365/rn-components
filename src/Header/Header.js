@@ -48,7 +48,7 @@ const Header = props => {
    */
   const textStyle = {
     fontSize: 18,
-    color: "white"
+    color: "black"
   };
 
   /**
@@ -94,7 +94,7 @@ Header.defaultProps = {
   statusBarVisible: true,
   statusBarColor: "transparent",
   statusBarStyle: "light-content",
-  backgroundColor: "#007aff"
+  backgroundColor: "white"
 };
 
 export default Header;

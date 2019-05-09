@@ -12,10 +12,7 @@ class Button extends React.Component {
     const { style, rasied, text, textStyle, ...other } = this.props;
 
     return (
-      <Touchable
-        style={StyleSheet.flatten([style, styles.button, rasied && styles.rasied])}
-        {...other}
-      >
+      <Touchable style={StyleSheet.flatten([style, styles.button, rasied && styles.rasied])} {...other}>
         <Text text={text} style={[styles.text, textStyle]} />
       </Touchable>
     );

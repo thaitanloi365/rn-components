@@ -6,10 +6,10 @@ import { Image, View } from "react-native";
 
 /**
  *
- * @param {import("rn-components-base").IconProps} props
+ * @param {import("rn-components").IconProps} props
  */
 const Icon = props => {
-  const { style, iconSource, iconStyle, onPress, hitSlop, disabled, size = 22 } = props;
+  const { style, iconSource, iconStyle, onPress, hitSlop, disabled, iconContainerStyle, size = 24 } = props;
 
   /**
    * @type {import("react-native").ViewStyle}
@@ -22,9 +22,17 @@ const Icon = props => {
     justifyContent: "center",
     alignItems: "center"
   };
+
   return (
-    <Touchable disabled={disabled} onPress={onPress} hitSlop={hitSlop}>
-      <View style={[containerStyle, style]}>
+    <Touchable
+      style={[containerStyle, style]}
+      boundedRipple={false}
+      disabled={disabled}
+      onPress={onPress}
+      hitSlop={hitSlop}
+      useForeground
+    >
+      <View style={iconContainerStyle}>
         <Image style={iconStyle} source={iconSource} />
       </View>
     </Touchable>

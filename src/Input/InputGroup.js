@@ -1,12 +1,11 @@
-// @ts-nocheck
 import React from "react";
-import { View, StyleSheet, TextInputProps } from "react-native";
+import { View, StyleSheet } from "react-native";
 import TextInput from "./TextInput";
 
 class InputGroup extends React.Component {
   constructor(props) {
-    super(props)
-    this.inputRefs = []
+    super(props);
+    this.inputRefs = [];
   }
   onInputSubmmitEditing = index => {
     const length = this.inputRefs.length;
@@ -22,36 +21,6 @@ class InputGroup extends React.Component {
         if (this.props.onInputFocus) {
           this.props.onInputFocus(index);
         }
-      }
-    }
-  };
-
-  onShouldReturn = (index, text, error) => {
-    const obj = {
-      index,
-      errorType: error,
-      text
-    };
-
-    if (error === "none") {
-      const items = this.validateForm.filter(item => item.index !== index);
-      this.validateForm = items;
-
-      if (items.length > 0) {
-        const index = items[0].index;
-        this.focus(index);
-      } else {
-        this.onInputSubmmitEditing(index);
-      }
-    } else {
-      const validateIndex = this.validateForm.findIndex(item => item.index === index);
-      if (validateIndex === -1) {
-        this.validateForm.push(obj);
-      }
-
-      if (this.validateForm.length > 0) {
-        const index = this.validateForm[0].index;
-        this.focus(index);
       }
     }
   };
@@ -93,19 +62,14 @@ class InputGroup extends React.Component {
     let inputs = null;
     if (Array.isArray(children) && children.length > 0) {
       inputs = React.Children.map(children, (child, index) => {
-        if (!React.isValidElement < TextInputProps > child) return null;
+        if (!React.isValidElement(child)) return null;
         const { style } = child.props;
-        const marginTop =
-          index === 0 ? 0 : (style && StyleSheet.flatten(style).marginTop) || spacing;
+        const marginTop = index === 0 ? 0 : (style && StyleSheet.flatten(style).marginTop) || spacing;
         const lastIndex = index === children.length - 1;
-        const returnKeyType = child.props.returnKeyType
-          ? child.props.returnKeyType
-          : lastIndex
-          ? "done"
-          : "next";
+        const returnKeyType = child.props.returnKeyType ? child.props.returnKeyType : lastIndex ? "done" : "next";
         if (child.type === TextInput) {
           return React.cloneElement(child, {
-            style: { marginTop },
+            style: StyleSheet.flatten([child.props.style, { marginTop }]),
             returnKeyType: returnKeyType,
             onSubmitEditing: () => this.onInputSubmmitEditing(index),
             ref: node => {
@@ -114,17 +78,8 @@ class InputGroup extends React.Component {
               }
             }
           });
-        } else {
-          return React.cloneElement(child, {
-            style: { marginTop },
-            returnKeyType: returnKeyType,
-            focusOnError: false,
-            onShouldReturn: (text, error) => this.onShouldReturn(index, text, error),
-            ref: node => {
-              if (node) this.inputRefs.push(node);
-            }
-          });
         }
+        return child;
       });
     } else {
       inputs = children;

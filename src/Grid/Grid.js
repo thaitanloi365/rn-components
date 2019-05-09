@@ -3,8 +3,7 @@ import { View } from "react-native";
 import Touchable from "../Touchable/Touchable";
 import Row from "../Row/Row";
 
-const chunk = (arr, n) =>
-  Array.from(Array(Math.ceil(arr.length / n)), (_, i) => arr.slice(i * n, i * n + n));
+const chunk = (arr, n) => Array.from(Array(Math.ceil(arr.length / n)), (_, i) => arr.slice(i * n, i * n + n));
 
 const prepareData = (data, itemsPerRow) => {
   const rows = chunk(data, itemsPerRow);

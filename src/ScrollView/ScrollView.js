@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  ScrollView as RNScrollView,
-  TextInput,
-  UIManager,
-  findNodeHandle,
-  Platform
-} from "react-native";
+import { ScrollView as RNScrollView, TextInput, UIManager, findNodeHandle, Platform } from "react-native";
 import KeyboardSpacer from "./KeyboardSpacer";
 
 class ScrollView extends React.Component {
@@ -24,64 +18,68 @@ class ScrollView extends React.Component {
     keyboardTop: 0
   };
 
-  scrollToInput = () => {
-    if (Platform.OS === "android" || !this.ref.current) return;
-    const currentlyFocusedField = TextInput.State.currentlyFocusedField();
-    const responder = this.ref.current.getScrollResponder();
+  /**
+   * @param {null | number | React.Component<any, any> | React.ComponentClass<any>} node
+   */
 
-    if (!currentlyFocusedField || !responder) {
+  scrollToNode = (node, offset = 75) => {
+    if (Platform.OS === "android" || !this.ref.current) return;
+    const responder = this.ref.current.getScrollResponder();
+    if (!node || !responder) {
+      return;
+    }
+    const reactNode = findNodeHandle(node);
+
+    if (!reactNode) {
       return;
     }
 
     // @ts-ignore
-    UIManager.viewIsDescendantOf(
-      currentlyFocusedField,
-      responder.getInnerViewNode(),
-      isAncestor => {
-        if (isAncestor) {
-          UIManager.measureInWindow(currentlyFocusedField, (x, y, width, height) => {
-            const inputBottom = y + height;
-            console.log(inputBottom, this.state.keyboardTop);
-            if (inputBottom < this.state.keyboardTop) return;
-            const reactNode = findNodeHandle(currentlyFocusedField);
-            const { topOffset } = this.props;
-            responder.scrollResponderScrollNativeHandleToKeyboard(
-              reactNode,
-              topOffset + height,
-              true
-            );
-          });
-        }
+    UIManager.viewIsDescendantOf(reactNode, responder.getInnerViewNode(), isAncestor => {
+      if (isAncestor) {
+        UIManager.measureInWindow(reactNode, (x, y, width, height) => {
+          const inputBottom = y + height;
+          if (inputBottom < this.state.keyboardTop) return;
+
+          const topOffset = offset || this.props.topOffset;
+
+          responder.scrollResponderScrollNativeHandleToKeyboard(reactNode, topOffset + height, true);
+        });
       }
-    );
+    });
   };
 
-  onContentSizeChange = (w, h) => {
+  scrollToCurrentInput() {
+    const currentlyFocusedField = TextInput.State.currentlyFocusedField();
+    this.scrollToNode(currentlyFocusedField);
+  }
+
+  _onContentSizeChange = (w, h) => {
     this.contentHeight = h;
     if (this.height !== 0) {
-      this.updateScrollViewEnable();
+      this._updateScrollViewEnable();
     }
   };
 
-  onLayout = event => {
+  _onLayout = event => {
     this.height = event.nativeEvent.layout.height;
     if (this.contentHeight != 0) {
-      this.updateScrollViewEnable();
+      this._updateScrollViewEnable();
     }
   };
 
-  updateScrollViewEnable = () => {
+  _updateScrollViewEnable = () => {
     const scrollEnable = this.contentHeight > this.height;
     if (this.state.scrollEnable != scrollEnable) {
       this.setState({ scrollEnable });
     }
   };
 
-  onShow = (spacer, keyboardTop) => {
+  _onShow = (spacer, keyboardTop) => {
     this.setState({ keyboardSpacer: spacer, keyboardTop });
   };
 
-  onHide = () => {
+  _onHide = () => {
     this.setState({ keyboardSpacer: 0, keyboardTop: 0 });
   };
 
@@ -93,16 +91,12 @@ class ScrollView extends React.Component {
         {...other}
         ref={this.ref}
         scrollEnabled={scrollEnable}
-        onContentSizeChange={this.onContentSizeChange}
-        onLayout={this.onLayout}
+        onContentSizeChange={this._onContentSizeChange}
+        onLayout={this._onLayout}
         automaticallyAdjustContentInsets={false}
       >
         {this.props.children}
-        <KeyboardSpacer
-          onShow={this.onShow}
-          onHide={this.onHide}
-          keyboardTopOffset={keyboardTopOffset}
-        />
+        <KeyboardSpacer onShow={this._onShow} onHide={this._onHide} keyboardTopOffset={keyboardTopOffset} />
       </RNScrollView>
     );
   }

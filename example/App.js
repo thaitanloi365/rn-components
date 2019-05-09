@@ -1,14 +1,6 @@
 import React, { Component } from "react";
-import { Platform, View, ScrollView } from "react-native";
-import {
-  Touchable,
-  Row,
-  Col,
-  StyleSheet,
-  Text,
-  Header,
-  Button,
-} from "rn-components";
+import { Platform, View } from "react-native";
+import { Touchable, Row, Col, StyleSheet, Text, Header, Button, Icon, ScrollView } from "rn-components";
 import { Toast, Overlay } from "rn-notifier";
 const instructions = Platform.select({
   ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
@@ -25,13 +17,7 @@ export default class App extends Component {
   render() {
     return (
       <View style={StyleSheet.absoluteFill}>
-        <Toast ref={r => (this.toast = r)} />
-        <Overlay ref={r => (this.overlay = r)} />
-        <Header
-          title="Home"
-          backgroundColor="#5ac8fe"
-          statusBarProps={{ backgroundColor: "#007aff" }}
-        />
+        <Header title="Home" />
         <ScrollView>
           <Touchable style={{ backgroundColor: "#eee" }}>
             <Text style={styles.welcome} text="Text inside touchable" />
@@ -52,35 +38,21 @@ export default class App extends Component {
             <Text style={styles.instructions} text={instructions} />
           </Col>
 
-
           <Col alignHorizontal="center">
-            <Button
-              style={{ marginVertical: 6 }}
-              text="Show overlay and hide after 3s"
-              onPress={this.onPress}
-            />
-            <Button
-              style={{ marginVertical: 6 }}
-              text="Show toast error"
-              onPress={() => this.onShowToast("Error")}
-            />
-            <Button
-              style={{ marginVertical: 6 }}
-              text="Show toast info"
-              onPress={() => this.onShowToast("Info")}
-            />
-            <Button
-              style={{ marginVertical: 6 }}
-              text="Show toast warn"
-              onPress={() => this.onShowToast("Warn")}
-            />
+            <Button style={{ marginVertical: 6 }} text="Show overlay and hide after 3s" onPress={this.onPress} />
+            <Button style={{ marginVertical: 6 }} text="Show toast error" onPress={() => this.onShowToast("Error")} />
+            <Button style={{ marginVertical: 6 }} text="Show toast info" onPress={() => this.onShowToast("Info")} />
+            <Button style={{ marginVertical: 6 }} text="Show toast warn" onPress={() => this.onShowToast("Warn")} />
             <Button
               style={{ marginVertical: 6 }}
               text="Show toast success"
               onPress={() => this.onShowToast("Success")}
             />
           </Col>
+          <Icon iconSource={require("./camera_button.png")} />
         </ScrollView>
+        <Toast ref={r => (this.toast = r)} />
+        <Overlay ref={r => (this.overlay = r)} />
       </View>
     );
   }
