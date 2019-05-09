@@ -201,26 +201,26 @@ declare module "rn-components" {
     scrollToCurrentInput(): void;
   }
 
-  export class Device {
-    isAndroid(): boolean;
+  export namespace Device {
+    export function isAndroid(): boolean;
 
-    isIOS(): boolean;
+    export function isIOS(): boolean;
 
-    getScreenSize(): { width: number; height: number };
+    export function getScreenSize(): { width: number; height: number };
 
-    isIphoneX(): boolean;
+    export function isIphoneX(): boolean;
 
-    ifIphoneX<A, B>(iphoneXStyle: A, regularStyle: B): A | B;
+    export function ifIphoneX<A, B>(iphoneXStyle: A, regularStyle: B): A | B;
 
-    getStatusBarHeight(safe?: boolean): number;
+    export function getStatusBarHeight(safe?: boolean): number;
 
-    getHeaderHeight(): number;
+    export function getHeaderHeight(): number;
 
-    deviceType(): DeviceType;
+    export function deviceType(): DeviceType;
 
-    getStatusBarStyle(): StatusBarStyle | null;
+    export function getStatusBarStyle(): StatusBarStyle | null;
 
-    setBaseSize(width: number, height: number): void;
+    export function setBaseSize(width: number, height: number): void;
   }
 
   export class Text extends React.Component<TextProps, any> {}
@@ -230,6 +230,4 @@ declare module "rn-components" {
   export class Header extends React.Component<HeaderProps, any> {}
 
   export class Icon extends React.Component<IconProps, any> {}
-
-  export class StatusBar extends React.Component<StatusBarProps, any> {}
 }
