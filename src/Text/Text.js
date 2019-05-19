@@ -6,9 +6,14 @@ const Text = props => {
   const c = children || text;
   const renderText = () => <RNText style={style}>{c}</RNText>;
 
-  if (onPress) {
+  if (typeof onPress === "function") {
     return (
-      <TouchableOpacity style={containerStyle} disabled={disabled} activeOpacity={activeOpacity}>
+      <TouchableOpacity
+        onPress={onPress}
+        style={containerStyle}
+        disabled={disabled}
+        activeOpacity={activeOpacity}
+      >
         {renderText()}
       </TouchableOpacity>
     );

@@ -1,6 +1,18 @@
 import React, { Component } from "react";
 import { Platform, View } from "react-native";
-import { Touchable, Row, Col, StyleSheet, Text, Header, Button, Icon, ScrollView } from "rn-components";
+import {
+  Touchable,
+  Row,
+  Col,
+  StyleSheet,
+  Text,
+  Header,
+  Button,
+  Icon,
+  ScrollView,
+  TextInput,
+  InputGroup
+} from "rn-components";
 import { Toast, Overlay } from "rn-notifier";
 const instructions = Platform.select({
   ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
@@ -39,10 +51,26 @@ export default class App extends Component {
           </Col>
 
           <Col alignHorizontal="center">
-            <Button style={{ marginVertical: 6 }} text="Show overlay and hide after 3s" onPress={this.onPress} />
-            <Button style={{ marginVertical: 6 }} text="Show toast error" onPress={() => this.onShowToast("Error")} />
-            <Button style={{ marginVertical: 6 }} text="Show toast info" onPress={() => this.onShowToast("Info")} />
-            <Button style={{ marginVertical: 6 }} text="Show toast warn" onPress={() => this.onShowToast("Warn")} />
+            <Button
+              style={{ marginVertical: 6 }}
+              text="Show overlay and hide after 3s"
+              onPress={this.onPress}
+            />
+            <Button
+              style={{ marginVertical: 6 }}
+              text="Show toast error"
+              onPress={() => this.onShowToast("Error")}
+            />
+            <Button
+              style={{ marginVertical: 6 }}
+              text="Show toast info"
+              onPress={() => this.onShowToast("Info")}
+            />
+            <Button
+              style={{ marginVertical: 6 }}
+              text="Show toast warn"
+              onPress={() => this.onShowToast("Warn")}
+            />
             <Button
               style={{ marginVertical: 6 }}
               text="Show toast success"
@@ -50,6 +78,16 @@ export default class App extends Component {
             />
           </Col>
           <Icon iconSource={require("./camera_button.png")} />
+          <InputGroup numberInputs={4}>
+            <TextInput placeholder="input 1" />
+            <TextInput placeholder="input 2" />
+            <Text />
+            <TextInput placeholder="input 3" />
+            <TextInput placeholder="input 4" />
+            <Text />
+          </InputGroup>
+          <Text />
+          <Text onPress={() => console.log("asdfasf")} />
         </ScrollView>
         <Toast ref={r => (this.toast = r)} />
         <Overlay ref={r => (this.overlay = r)} />

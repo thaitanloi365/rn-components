@@ -3,6 +3,10 @@ import { View, TextInput as RNTextInput, Platform, StyleSheet } from "react-nati
 import Text from "../Text/Text";
 import RenderNode from "../Utils/RenderNode";
 
+/**
+ * @typedef {import("rn-components").TextInputProps} Props
+ * @extends {React.Component<Props>}
+ */
 class TextInput extends React.Component {
   textInputRef = React.createRef();
 
@@ -11,6 +15,12 @@ class TextInput extends React.Component {
     this.state = {
       text: props.defaultValue || ""
     };
+  }
+
+  componentDidMount() {
+    if (this.props.autoFocus) {
+      this.focus();
+    }
   }
 
   setNativeProps = props => {
@@ -72,6 +82,7 @@ class TextInput extends React.Component {
       multiline,
       maxLength,
       onSubmitEditing,
+      onEndEditing,
       onKeyPress,
       onFocus,
       editable,
@@ -91,6 +102,9 @@ class TextInput extends React.Component {
           borderBottomWidth: underlineWidth || StyleSheet.hairlineWidth
         };
 
+    /**
+     * @type {import("react-native").TextStyle}
+     */
     const defaultStyle = {
       paddingBottom: 4,
       fontSize: 16,
@@ -103,7 +117,13 @@ class TextInput extends React.Component {
       })
     };
 
-    const inputContainer = [{ flexDirection: "row", alignItems: "center" }, inputContainerStyle];
+    /**
+     * @type {import("react-native").ViewStyle}
+     */
+    const inputContainer = StyleSheet.flatten([
+      { flexDirection: "row", alignItems: "center" },
+      inputContainerStyle
+    ]);
 
     return (
       <View

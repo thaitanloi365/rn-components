@@ -3,7 +3,7 @@ export { default as Col } from "./Col/Col";
 export { default as Grid } from "./Grid/Grid";
 export { default as Header } from "./Header/Header";
 export { default as Icon } from "./Icon/Icon";
-export { default as Input } from "./Input/InputGroup";
+export { default as InputGroup } from "./Input/InputGroup";
 export { default as TextInput } from "./Input/TextInput";
 export { default as Row } from "./Row/Row";
 export { default as ScrollView } from "./ScrollView/ScrollView";

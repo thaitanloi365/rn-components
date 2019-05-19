@@ -62,7 +62,13 @@ declare module "rn-components" {
     children?: React.ReactElement[] | React.ReactNode;
     alignSelf?: "auto" | FlexAlignType;
     alignHorizontal?: FlexAlignType;
-    alignVertical?: "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "space-evenly";
+    alignVertical?:
+      | "flex-start"
+      | "flex-end"
+      | "center"
+      | "space-between"
+      | "space-around"
+      | "space-evenly";
   }
 
   interface RowProps extends ViewProps {
@@ -71,7 +77,13 @@ declare module "rn-components" {
     children?: React.ReactElement[] | React.ReactNode;
     alignSelf?: "auto" | FlexAlignType;
     alignVertical?: FlexAlignType;
-    alignHorizontal?: "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "space-evenly";
+    alignHorizontal?:
+      | "flex-start"
+      | "flex-end"
+      | "center"
+      | "space-between"
+      | "space-around"
+      | "space-evenly";
   }
 
   interface GridProps extends ViewProps {
@@ -92,6 +104,7 @@ declare module "rn-components" {
   interface ScrollViewProps extends RNScrollViewProps {
     keyboardTopOffset?: number;
     topOffset?: number;
+    navigation?: any;
   }
 
   interface TextProps extends RNTextProps {
@@ -121,26 +134,13 @@ declare module "rn-components" {
     children?: React.ReactChild;
   }
 
-  type TextInputValidateType = "none" | "empty" | "length" | "email" | "phone" | "regex";
-
-  type InputGroupValidateForm = Array<{
-    index: number;
-    text: string;
-    errorType: TextInputValidateType;
-  }>;
-
-  type TextInputValidateForm = {
-    type: TextInputValidateType;
-    errorText: string;
-  };
-
   type TextInputExtraProps = Omit<RNTextInputProps, "style"> & ViewProps;
 
   type InputGroupProps = ViewProps & {
     onInputFocus?: (index: number) => void;
-    onInputEndEditing?: (index: number) => void;
-    onInputSubmit?: (validateForm?: InputGroupValidateForm) => void;
+    onInputSubmit?: () => void;
     spacing?: number;
+    numberInputs?: number;
   };
 
   interface TextInputProps extends TextInputExtraProps {
@@ -152,13 +152,6 @@ declare module "rn-components" {
     helperStyle?: StyleProp<TextStyle>;
     LeftComponent?: React.ReactElement | React.FunctionComponent;
     RightComponent?: React.ReactElement | React.FunctionComponent;
-    minLength?: number;
-    validateTypes?: Array<TextInputValidateForm>;
-    errorTextStyle?: StyleProp<TextStyle>;
-    indicatorTextStyle?: StyleProp<TextStyle>;
-    focusOnError?: boolean;
-    onShouldReturn?: (text: string, error?: TextInputValidateType) => void;
-    regex?: RegExp;
   }
 
   interface ButtonProps extends TouchableProps {
@@ -232,4 +225,8 @@ declare module "rn-components" {
   export class Icon extends React.Component<IconProps, any> {}
 
   export class StatusBar extends React.Component<StatusBarProps, any> {}
+
+  export class TextInput extends React.Component<TextInputProps, any> {}
+
+  export class InputGroup extends React.Component<InputGroupProps, any> {}
 }
