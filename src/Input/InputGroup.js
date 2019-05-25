@@ -12,6 +12,17 @@ class InputGroup extends React.Component {
     this.inputRefs = [];
   }
 
+  scrollToInput = () => {
+    const { scrollViewRef } = this.props;
+    if (scrollViewRef && scrollViewRef.current) {
+      scrollViewRef.current.scrollToCurrentInput();
+    }
+  };
+
+  onFocus = index => {
+    this.scrollToInput();
+  };
+
   onInputSubmmitEditing = index => {
     const { onInputSubmit, onInputFocus } = this.props;
     const length = this.inputRefs.length;
@@ -72,21 +83,17 @@ class InputGroup extends React.Component {
       inputs = React.Children.map(children, (child, index) => {
         if (!React.isValidElement(child)) return null;
         const { style } = child.props;
-        const marginTop =
-          index === 0 ? 0 : (style && StyleSheet.flatten(style).marginTop) || spacing;
+        const marginTop = index === 0 ? 0 : (style && StyleSheet.flatten(style).marginTop) || spacing;
 
         if (child.type === TextInput) {
           const lastIndex = index === totalInputs - 1;
-          const returnKeyType = child.props.returnKeyType
-            ? child.props.returnKeyType
-            : lastIndex
-            ? "done"
-            : "next";
+          const returnKeyType = child.props.returnKeyType ? child.props.returnKeyType : lastIndex ? "done" : "next";
 
           return React.cloneElement(child, {
             style: StyleSheet.flatten([{ marginTop }, child.props.style]),
             returnKeyType: returnKeyType,
             onSubmitEditing: () => this.onInputSubmmitEditing(index),
+            onFocus: () => this.onFocus(index),
             ref: node => {
               if (node && this.inputRefs.length !== children.length) {
                 this.inputRefs.push(node);

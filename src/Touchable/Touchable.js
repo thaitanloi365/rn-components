@@ -20,8 +20,8 @@ const TouchableComponent = props => {
 
 class Touchable extends React.Component {
   static defaultProps = {
-    activeOpacity: 0.5,
-    boundedRipple: false,
+    activeOpacity: 0.7,
+    boundedRipple: true,
     linearProps: {
       start: { x: 0, y: 0.5 },
       end: { x: 1, y: 0.5 },

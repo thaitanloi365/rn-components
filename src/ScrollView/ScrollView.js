@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  ScrollView as RNScrollView,
-  TextInput,
-  UIManager,
-  findNodeHandle,
-  Platform
-} from "react-native";
+import { ScrollView as RNScrollView, TextInput, UIManager, findNodeHandle, Platform } from "react-native";
 import KeyboardSpacer from "./KeyboardSpacer";
 
 /**
@@ -65,15 +59,13 @@ class ScrollView extends React.Component {
       if (isAncestor) {
         UIManager.measureInWindow(reactNode, (x, y, width, height) => {
           const inputBottom = y + height;
-          if (inputBottom < this.state.keyboardTop) return;
+          if (inputBottom < this.state.keyboardTop) {
+            return;
+          }
 
-          const topOffset = offset || this.props.topOffset;
+          const topOffset = offset || this.props.inputBottomOffset;
 
-          responder.scrollResponderScrollNativeHandleToKeyboard(
-            reactNode,
-            topOffset + height,
-            true
-          );
+          responder.scrollResponderScrollNativeHandleToKeyboard(reactNode, topOffset + height, true);
         });
       }
     });
@@ -126,11 +118,7 @@ class ScrollView extends React.Component {
         automaticallyAdjustContentInsets={false}
       >
         {this.props.children}
-        <KeyboardSpacer
-          onShow={this._onShow}
-          onHide={this._onHide}
-          keyboardTopOffset={keyboardTopOffset}
-        />
+        <KeyboardSpacer onShow={this._onShow} onHide={this._onHide} keyboardTopOffset={keyboardTopOffset} />
       </RNScrollView>
     );
   }

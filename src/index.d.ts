@@ -62,13 +62,7 @@ declare module "rn-components" {
     children?: React.ReactElement[] | React.ReactNode;
     alignSelf?: "auto" | FlexAlignType;
     alignHorizontal?: FlexAlignType;
-    alignVertical?:
-      | "flex-start"
-      | "flex-end"
-      | "center"
-      | "space-between"
-      | "space-around"
-      | "space-evenly";
+    alignVertical?: "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "space-evenly";
   }
 
   interface RowProps extends ViewProps {
@@ -77,13 +71,7 @@ declare module "rn-components" {
     children?: React.ReactElement[] | React.ReactNode;
     alignSelf?: "auto" | FlexAlignType;
     alignVertical?: FlexAlignType;
-    alignHorizontal?:
-      | "flex-start"
-      | "flex-end"
-      | "center"
-      | "space-between"
-      | "space-around"
-      | "space-evenly";
+    alignHorizontal?: "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "space-evenly";
   }
 
   interface GridProps extends ViewProps {
@@ -101,9 +89,15 @@ declare module "rn-components" {
     duration?: number;
   }
 
+  interface KeyboardSpacerProps extends ViewProps {
+    keyboardTopOffset?: number;
+    onShow?: (keyboardSpacer: number, keyboardTop: number) => void;
+    onHide?: () => void;
+  }
+
   interface ScrollViewProps extends RNScrollViewProps {
     keyboardTopOffset?: number;
-    topOffset?: number;
+    inputBottomOffset?: number;
     navigation?: any;
   }
 
@@ -141,6 +135,7 @@ declare module "rn-components" {
     onInputSubmit?: () => void;
     spacing?: number;
     numberInputs?: number;
+    scrollViewRef?: React.RefObject<ScrollView>;
   };
 
   interface TextInputProps extends TextInputExtraProps {
@@ -193,6 +188,8 @@ declare module "rn-components" {
     scrollToNode(node, offset?: number): void;
     scrollToCurrentInput(): void;
   }
+
+  export class KeyboardSpacer extends React.Component<KeyboardSpacerProps, any> {}
 
   export namespace Device {
     export function isAndroid(): boolean;

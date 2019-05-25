@@ -37,10 +37,11 @@ class KeyboardSpacer extends React.Component {
 
     const screenHeight = Device.getScreenSize().height;
     const { keyboardTopOffset, onShow } = this.props;
-    const keyboardSpace = screenHeight - event.endCoordinates.screenY + keyboardTopOffset;
+    const keyboardTop = event.endCoordinates.screenY;
+    const keyboardSpace = screenHeight - keyboardTop + keyboardTopOffset;
 
     this.setState({ keyboardSpace, isOpenned: true }, () => {
-      if (onShow) onShow(keyboardSpace);
+      if (onShow) onShow(keyboardSpace, keyboardTop);
     });
   };
 
