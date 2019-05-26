@@ -223,9 +223,19 @@ declare module "rn-components" {
 
   export class StatusBar extends React.Component<StatusBarProps, any> {}
 
-  export class TextInput extends React.Component<TextInputProps, any> {}
+  export class StyleSheetTextInput extends React.Component<TextInputProps, any> {}
 
   export class InputGroup extends React.Component<InputGroupProps, any> {}
 
-  export class TextInput extends React.Component<TextInputProps, any> {}
+  export class TextInput extends React.Component<TextInputProps, any> {
+    setNativeProps(props: any): void;
+
+    blur(): void;
+
+    focus(): void;
+
+    clearText(): void;
+
+    getText(): string;
+  }
 }
