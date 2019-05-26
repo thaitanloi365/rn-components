@@ -106,7 +106,7 @@ declare module "rn-components" {
     onPress?: () => void;
     activeOpacity?: number;
     disabled?: boolean;
-    containerStyle?: ViewProps;
+    containerStyle?: ViewStyle;
   }
 
   interface StatusBarProps extends RNStatusBarProps {
