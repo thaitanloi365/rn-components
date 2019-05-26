@@ -74,7 +74,7 @@ const Header = props => {
     <View style={[{ backgroundColor }, style]}>
       {statusBarVisible && <StatusBar {...statusBarProps} />}
       <View style={[defaultStyle, headerStyle]}>
-        <View style={[{ flex: 1 }, rightContainerStyle]}>
+        <View style={[{ flex: 1 }, leftContainerStyle]}>
           {renderNode(View, LeftComponent, {
             style: buttonCornor
           })}
