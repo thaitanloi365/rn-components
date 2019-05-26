@@ -32,8 +32,8 @@ const Icon = props => {
       hitSlop={hitSlop}
       useForeground
     >
-      <View style={iconContainerStyle}>
-        <Image style={iconStyle} source={iconSource} />
+      <View style={[containerStyle, iconContainerStyle]}>
+        <Image resizeMode="contain" style={iconStyle} source={iconSource} />
       </View>
     </Touchable>
   );
