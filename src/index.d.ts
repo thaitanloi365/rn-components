@@ -226,4 +226,6 @@ declare module "rn-components" {
   export class TextInput extends React.Component<TextInputProps, any> {}
 
   export class InputGroup extends React.Component<InputGroupProps, any> {}
+
+  export class TextInput extends React.Component<TextInputProps, any> {}
 }
