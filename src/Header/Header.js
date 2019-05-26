@@ -91,6 +91,8 @@ const Header = props => {
 };
 
 Header.defaultProps = {
+  LeftComponent: View,
+  RightComponent: View,
   statusBarVisible: true,
   statusBarColor: "transparent",
   statusBarStyle: "light-content",
