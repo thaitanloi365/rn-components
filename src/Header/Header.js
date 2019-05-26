@@ -74,16 +74,21 @@ const Header = props => {
     <View style={[{ backgroundColor }, style]}>
       {statusBarVisible && <StatusBar {...statusBarProps} />}
       <View style={[defaultStyle, headerStyle]}>
-        {renderNode(View, LeftComponent, {
-          style: StyleSheet.flatten([buttonCornor, { paddingLeft: 5 }, leftContainerStyle])
-        })}
+        <View style={[{ flex: 1 }, rightContainerStyle]}>
+          {renderNode(View, LeftComponent, {
+            style: StyleSheet.flatten([buttonCornor, leftContainerStyle])
+          })}
+        </View>
 
         <View style={[titleContainer, titleContainerStyle]}>
           <Text style={[textStyle, titleStyle]} text={title} />
         </View>
-        {renderNode(View, RightComponent, {
-          style: StyleSheet.flatten([buttonCornor, { paddingRight: 5 }, rightContainerStyle])
-        })}
+
+        <View style={[{ flex: 1 }, rightContainerStyle]}>
+          {renderNode(View, RightComponent, {
+            style: StyleSheet.flatten([buttonCornor, rightContainerStyle])
+          })}
+        </View>
       </View>
       {children}
     </View>
