@@ -76,7 +76,7 @@ const Header = props => {
       <View style={[defaultStyle, headerStyle]}>
         <View style={[{ flex: 1 }, rightContainerStyle]}>
           {renderNode(View, LeftComponent, {
-            style: StyleSheet.flatten([buttonCornor, leftContainerStyle])
+            style: buttonCornor
           })}
         </View>
 
@@ -86,7 +86,7 @@ const Header = props => {
 
         <View style={[{ flex: 1 }, rightContainerStyle]}>
           {renderNode(View, RightComponent, {
-            style: StyleSheet.flatten([buttonCornor, rightContainerStyle])
+            style: buttonCornor
           })}
         </View>
       </View>
