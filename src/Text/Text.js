@@ -8,12 +8,7 @@ const Text = props => {
 
   if (typeof onPress === "function") {
     return (
-      <TouchableOpacity
-        onPress={onPress}
-        style={containerStyle}
-        disabled={disabled}
-        activeOpacity={activeOpacity}
-      >
+      <TouchableOpacity onPress={onPress} style={containerStyle} disabled={disabled} activeOpacity={activeOpacity}>
         {renderText()}
       </TouchableOpacity>
     );
@@ -23,7 +18,7 @@ const Text = props => {
 };
 
 Text.defaultProps = {
-  text: "Custom Text"
+  text: ""
 };
 
 Text.displayName = "Custom Text";
