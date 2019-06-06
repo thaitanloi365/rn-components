@@ -109,9 +109,14 @@ declare module "rn-components" {
     containerStyle?: StyleProp<ViewStyle>;
   }
 
-  interface StatusBarProps extends RNStatusBarProps {
-    style?: StyleProp<ViewStyle>;
+  interface TextareaProps extends TextInputExtraProps {
+    onPress?: () => void;
+    inputContainerStyle?: StyleProp<TextStyle>;
+    inputStyle?: StyleProp<TextStyle>;
+    helperText?: string;
+    helperStyle?: StyleProp<TextStyle>;
   }
+  interface StatusBarProps extends RNStatusBarProps {}
 
   interface HeaderProps extends ViewProps {
     statusBarVisible?: boolean;
@@ -147,6 +152,7 @@ declare module "rn-components" {
     helperStyle?: StyleProp<TextStyle>;
     LeftComponent?: React.ReactElement | React.FunctionComponent;
     RightComponent?: React.ReactElement | React.FunctionComponent;
+    onPress?: () => void;
   }
 
   interface ButtonProps extends TouchableProps {
@@ -238,6 +244,18 @@ declare module "rn-components" {
   }
 
   export class TextInput extends React.Component<TextInputProps, any> {
+    setNativeProps(props: any): void;
+
+    blur(): void;
+
+    focus(): void;
+
+    clearText(): void;
+
+    getText(): string;
+  }
+
+  export class Textarea extends React.Component<TextareaProps, any> {
     setNativeProps(props: any): void;
 
     blur(): void;

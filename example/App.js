@@ -11,7 +11,8 @@ import {
   Icon,
   ScrollView,
   TextInput,
-  InputGroup
+  InputGroup,
+  Textarea
 } from "rn-components";
 import { Toast, Overlay } from "rn-notifier";
 const instructions = Platform.select({
@@ -31,7 +32,7 @@ export default class App extends Component {
       <View style={StyleSheet.absoluteFill}>
         <Header title="Home" />
         <ScrollView>
-          <Touchable style={{ backgroundColor: "#eee" }}>
+          <Touchable style={{ backgroundColor: "#eee", height: 200 }}>
             <Text style={styles.welcome} text="Text inside touchable" />
             <Text style={styles.welcome} text="Welcome to React Native!" />
             <Text style={styles.instructions} text="To get started, edit App.js" />
@@ -52,31 +53,20 @@ export default class App extends Component {
 
           <Col alignHorizontal="center">
             <Button
-              style={{ marginVertical: 6 }}
+              style={{ marginVertical: 6, height: 48, width: 160 }}
               text="Show overlay and hide after 3s"
               onPress={this.onPress}
             />
-            <Button
-              style={{ marginVertical: 6 }}
-              text="Show toast error"
-              onPress={() => this.onShowToast("Error")}
-            />
-            <Button
-              style={{ marginVertical: 6 }}
-              text="Show toast info"
-              onPress={() => this.onShowToast("Info")}
-            />
-            <Button
-              style={{ marginVertical: 6 }}
-              text="Show toast warn"
-              onPress={() => this.onShowToast("Warn")}
-            />
+            <Button style={{ marginVertical: 6 }} text="Show toast error" onPress={() => this.onShowToast("Error")} />
+            <Button style={{ marginVertical: 6 }} text="Show toast info" onPress={() => this.onShowToast("Info")} />
+            <Button style={{ marginVertical: 6 }} text="Show toast warn" onPress={() => this.onShowToast("Warn")} />
             <Button
               style={{ marginVertical: 6 }}
               text="Show toast success"
               onPress={() => this.onShowToast("Success")}
             />
           </Col>
+          <Textarea />
           <Icon iconSource={require("./camera_button.png")} />
           <InputGroup numberInputs={4}>
             <TextInput placeholder="input 1" />

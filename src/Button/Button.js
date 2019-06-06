@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Platform } from "react-native";
+import { StyleSheet, Platform, View } from "react-native";
 import Touchable from "../Touchable/Touchable";
 import Text from "../Text/Text";
 
@@ -13,7 +13,9 @@ class Button extends React.Component {
 
     return (
       <Touchable style={StyleSheet.flatten([style, styles.button, rasied && styles.rasied])} {...other}>
-        <Text text={text} style={[styles.text, textStyle]} />
+        <View style={{ alignSelf: "stretch", flex: 1, justifyContent: "center", alignContent: "center" }}>
+          <Text text={text} style={[styles.text, textStyle]} />
+        </View>
       </Touchable>
     );
   }
@@ -37,7 +39,8 @@ const styles = StyleSheet.create({
   text: {
     paddingVertical: 8,
     paddingHorizontal: 20,
-    color: "white"
+    color: "white",
+    alignSelf: "center"
   },
   button: {
     flexDirection: "row",
