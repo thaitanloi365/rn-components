@@ -19,11 +19,7 @@ class Textarea extends React.PureComponent {
   };
 
   focus = () => {
-    if (this._inputRef.current) {
-      if (!this._inputRef.current.isFocused()) {
-        this._inputRef.current.focus();
-      }
-    }
+    if (this._inputRef.current) this._inputRef.current.focus();
   };
 
   clearText = () => {
