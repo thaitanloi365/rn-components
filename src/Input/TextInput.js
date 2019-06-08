@@ -61,6 +61,9 @@ class TextInput extends React.Component {
 
   onStartShouldSetResponder = e => {
     this.focus();
+    if (typeof this.props.onPress === "function") {
+      this.props.onPress();
+    }
     return true;
   };
 
@@ -120,16 +123,10 @@ class TextInput extends React.Component {
     /**
      * @type {import("react-native").ViewStyle}
      */
-    const inputContainer = StyleSheet.flatten([
-      { flexDirection: "row", alignItems: "center" },
-      inputContainerStyle
-    ]);
+    const inputContainer = StyleSheet.flatten([{ flexDirection: "row", alignItems: "center" }, inputContainerStyle]);
 
     return (
-      <View
-        style={[style, underlineStyle]}
-        onStartShouldSetResponder={this.onStartShouldSetResponder}
-      >
+      <View style={[style, underlineStyle]} onStartShouldSetResponder={this.onStartShouldSetResponder}>
         {helperText && <Text text={helperText} style={helperStyle} />}
         <View style={inputContainer}>
           {RenderNode(View, LeftComponent)}

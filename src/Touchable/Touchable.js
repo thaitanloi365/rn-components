@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Platform, TouchableOpacity, TouchableNativeFeedback } from "react-native";
+import { View, Platform, TouchableOpacity, TouchableNativeFeedback, StyleSheet } from "react-native";
 import Device from "../Utils/Device";
 
 const isAndroid = Device.isAndroid();
@@ -52,10 +52,12 @@ class Touchable extends React.Component {
         : bg || TouchableNativeFeedback.SelectableBackground()
       : null;
 
+    const isFixedHeight = style && StyleSheet.flatten(style).height > 0;
+
     return (
       <View style={style} onLayout={onLayout} hitSlop={hitSlop}>
         <TouchableComponent {...other} background={background}>
-          <ViewComponent {...linearProps} style={contentStyle}>
+          <ViewComponent {...linearProps} style={[{ height: isFixedHeight ? "100%" : "auto" }, contentStyle]}>
             {children}
           </ViewComponent>
         </TouchableComponent>

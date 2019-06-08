@@ -13,3 +13,4 @@ export { default as StyleSheet } from "./StyleSheet/StyleSheet";
 export { default as Text } from "./Text/Text";
 export { default as Touchable } from "./Touchable/Touchable";
 export { default as Utils } from "./Utils";
+export { default as Textarea } from "./Input/Textarea";
