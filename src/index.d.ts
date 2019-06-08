@@ -107,6 +107,7 @@ declare module "rn-components" {
     activeOpacity?: number;
     disabled?: boolean;
     containerStyle?: StyleProp<ViewStyle>;
+    children?: React.ReactChild;
   }
 
   interface TextareaProps extends TextInputExtraProps {
