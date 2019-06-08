@@ -107,6 +107,7 @@ declare module "rn-components" {
     activeOpacity?: number;
     disabled?: boolean;
     containerStyle?: ViewStyle;
+    children?: React.ReactChild;
   }
 
   interface StatusBarProps extends RNStatusBarProps {
