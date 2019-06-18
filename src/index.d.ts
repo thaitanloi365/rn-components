@@ -99,6 +99,7 @@ declare module "rn-components" {
     keyboardTopOffset?: number;
     inputBottomOffset?: number;
     navigation?: any;
+    autoScrollNextInput?: boolean;
   }
 
   interface TextProps extends RNTextProps {

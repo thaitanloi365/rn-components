@@ -13,7 +13,8 @@ class ScrollView extends React.Component {
 
   static defaultProps = {
     keyboardTopOffset: 10,
-    topOffset: 75
+    topOffset: 75,
+    autoScrollNextInput: true
   };
 
   state = {
@@ -98,6 +99,7 @@ class ScrollView extends React.Component {
   };
 
   _onShow = (spacer, keyboardTop) => {
+    this.props.autoScrollNextInput && this.scrollToCurrentInput();
     this.setState({ keyboardSpacer: spacer, keyboardTop });
   };
 
