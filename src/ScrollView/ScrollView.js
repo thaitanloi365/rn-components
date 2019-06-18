@@ -14,7 +14,7 @@ class ScrollView extends React.Component {
   static defaultProps = {
     keyboardTopOffset: 10,
     topOffset: 75,
-    autoScrollNextInput: true
+    autoScrollNextInput: false
   };
 
   state = {
