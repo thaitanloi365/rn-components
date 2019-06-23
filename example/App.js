@@ -31,8 +31,8 @@ export default class App extends Component {
     return (
       <View style={StyleSheet.absoluteFill}>
         <Header title="Home" />
-        <ScrollView>
-          <Touchable style={{ backgroundColor: "#eee", height: 200 }}>
+        <ScrollView keyboardShouldPersistTaps="handled">
+          <Touchable style={{ backgroundColor: "#eee", height: 200, width: 300 }}>
             <Text style={styles.welcome} text="Text inside touchable" />
             <Text style={styles.welcome} text="Welcome to React Native!" />
             <Text style={styles.instructions} text="To get started, edit App.js" />
@@ -69,11 +69,26 @@ export default class App extends Component {
           <Textarea />
           <Icon iconSource={require("./camera_button.png")} />
           <InputGroup numberInputs={4}>
-            <TextInput placeholder="input 1" />
-            <TextInput placeholder="input 2" />
+            <TextInput
+              placeholder="input 1"
+              returnKeyLabel="11"
+              inputAccessoryViewID="122"
+              InputAccessoryComponent={
+                <Row
+                  onPress={() => {
+                    console.log("asdfasdf");
+                  }}
+                  alignHorizontal="space-between"
+                >
+                  <Text onPress={() => console.log("123")} text="asdfasdfa" style={{ color: "red" }} />
+                  <Text text="asdfasdfa" style={{ color: "red" }} />
+                </Row>
+              }
+            />
+            <TextInput placeholder="input 2" returnKeyLabel="33" />
             <Text />
-            <TextInput placeholder="input 3" />
-            <TextInput placeholder="input 4" />
+            <TextInput placeholder="input 3" returnKeyLabel="255522" />
+            <TextInput placeholder="input 4" returnKeyLabel="2222" />
             <Text />
           </InputGroup>
           <Text />

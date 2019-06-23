@@ -112,12 +112,13 @@ class ScrollView extends React.Component {
     const { keyboardTopOffset, ...other } = this.props;
     return (
       <RNScrollView
+        keyboardShouldPersistTaps="handled"
+        automaticallyAdjustContentInsets={false}
         {...other}
-        ref={this.ref}
         scrollEnabled={scrollEnable}
+        ref={this.ref}
         onContentSizeChange={this._onContentSizeChange}
         onLayout={this._onLayout}
-        automaticallyAdjustContentInsets={false}
       >
         {this.props.children}
         <KeyboardSpacer onShow={this._onShow} onHide={this._onHide} keyboardTopOffset={keyboardTopOffset} />

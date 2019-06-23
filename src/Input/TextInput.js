@@ -1,5 +1,5 @@
 import React from "react";
-import { View, TextInput as RNTextInput, Platform, StyleSheet } from "react-native";
+import { View, TextInput as RNTextInput, Platform, StyleSheet, InputAccessoryView } from "react-native";
 import Text from "../Text/Text";
 import RenderNode from "../Utils/RenderNode";
 
@@ -86,6 +86,9 @@ class TextInput extends React.Component {
       maxLength,
       onSubmitEditing,
       onEndEditing,
+      inputAccessoryViewID,
+      inputAccessoryContainerStyle,
+      InputAccessoryComponent,
       onKeyPress,
       onFocus,
       editable,
@@ -120,10 +123,21 @@ class TextInput extends React.Component {
       })
     };
 
+    const inputAccessoryStyle = [
+      {
+        backgroundColor: "#EFF0F1",
+        borderTopWidth: 1,
+        borderTopColor: "rgba(0,0,0,0.1)",
+        paddingVertical: 10
+      },
+      inputAccessoryContainerStyle
+    ];
     /**
      * @type {import("react-native").ViewStyle}
      */
     const inputContainer = StyleSheet.flatten([{ flexDirection: "row", alignItems: "center" }, inputContainerStyle]);
+
+    const isValidInputAccessoryViewID = typeof inputAccessoryViewID === "string" && inputAccessoryViewID !== "";
 
     return (
       <View style={[style, underlineStyle]} onStartShouldSetResponder={this.onStartShouldSetResponder}>
@@ -132,6 +146,7 @@ class TextInput extends React.Component {
           {RenderNode(View, LeftComponent)}
           <RNTextInput
             ref={this.textInputRef}
+            inputAccessoryViewID={inputAccessoryViewID}
             style={[defaultStyle, inputStyle]}
             returnKeyLabel={returnKeyLabel}
             returnKeyType={returnKeyType}
@@ -145,6 +160,7 @@ class TextInput extends React.Component {
             onSubmitEditing={onSubmitEditing}
             onKeyPress={onKeyPress}
             onFocus={onFocus}
+            onEndEditing={onEndEditing}
             underlineColorAndroid="transparent"
             autoCapitalize={autoCapitalize || "none"}
             autoCorrect={false}
@@ -155,6 +171,11 @@ class TextInput extends React.Component {
           />
           {RenderNode(View, RightComponent)}
         </View>
+        {isValidInputAccessoryViewID && (
+          <InputAccessoryView nativeID={inputAccessoryViewID}>
+            <View style={inputAccessoryStyle}>{RenderNode(View, InputAccessoryComponent)}</View>
+          </InputAccessoryView>
+        )}
       </View>
     );
   }
