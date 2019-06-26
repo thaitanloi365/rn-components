@@ -21,7 +21,14 @@ const StatusBar = props => {
     );
   }
 
-  const { barStyle, translucent, backgroundColor, animated } = props;
+  const { barStyle, translucent, backgroundColor, animated, style } = props;
+  if (translucent) {
+    return (
+      <View style={[{ marginBottom: statusBarHeight }, style]}>
+        <RNStatusBar translucent barStyle={barStyle} backgroundColor={backgroundColor} animated={animated} />
+      </View>
+    );
+  }
 
   return (
     <RNStatusBar translucent={translucent} barStyle={barStyle} backgroundColor={backgroundColor} animated={animated} />
