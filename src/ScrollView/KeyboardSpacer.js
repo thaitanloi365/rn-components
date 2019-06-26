@@ -38,8 +38,13 @@ class KeyboardSpacer extends React.Component {
     let screenHeight = Device.getScreenSize().height;
     if (Device.isAndroid()) {
       const lib = require("react-native-extra-dimensions-android");
-      const menuBarHeight = lib.get("SOFT_MENU_BAR_ENABLED") ? lib.get("SOFT_MENU_BAR_HEIGHT") : 0;
-      screenHeight = lib.get("REAL_WINDOW_HEIGHT") - menuBarHeight;
+
+      const softMenuEnabled = lib.get("SOFT_MENU_BAR_ENABLED");
+      const softMenuHeight = lib.get("SOFT_MENU_BAR_HEIGHT");
+      const smartMenuHeight = lib.get("SMART_BAR_HEIGHT");
+      const menuBarHeight = softMenuEnabled ? (softMenuHeight == 0 ? smartMenuHeight : softMenuHeight) : 0;
+      const realHeight = lib.get("REAL_WINDOW_HEIGHT");
+      screenHeight = realHeight - menuBarHeight;
     }
 
     const { keyboardTopOffset, onShow } = this.props;
