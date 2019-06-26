@@ -35,7 +35,10 @@ class KeyboardSpacer extends React.Component {
     }
     LayoutAnimations.setLayoutAnimation(animationConfig);
 
-    const screenHeight = Device.getScreenSize().height;
+    const screenHeight = Device.isIOS()
+      ? Device.getScreenSize().height
+      : require("react-native-extra-dimensions-android").get("REAL_WINDOW_HEIGHT");
+
     const { keyboardTopOffset, onShow } = this.props;
     const keyboardTop = event.endCoordinates.screenY;
     const keyboardSpace = screenHeight - keyboardTop + keyboardTopOffset;
