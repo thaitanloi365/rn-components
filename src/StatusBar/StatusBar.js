@@ -3,7 +3,6 @@ import { StatusBar as RNStatusBar, View } from "react-native";
 import Device from "../Utils/Device";
 
 const statusBarHeight = Device.getStatusBarHeight(true);
-const isIOS = Device.isIOS();
 
 const StatusBar = props => {
   if (Device.isIOS()) {
@@ -37,7 +36,6 @@ const StatusBar = props => {
 
 StatusBar.defaultProps = {
   translucent: true,
-  backgroundColor: isIOS ? "white" : "rgba(0,0,0,0.4)",
   barStyle: "dark-content",
   animated: true
 };
