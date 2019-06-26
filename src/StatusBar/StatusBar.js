@@ -3,17 +3,11 @@ import { StatusBar as RNStatusBar, View } from "react-native";
 import Device from "../Utils/Device";
 
 const statusBarHeight = Device.getStatusBarHeight(true);
+const isIOS = Device.isIOS();
 
 const StatusBar = props => {
   if (Device.isIOS()) {
-    const {
-      style,
-      barStyle,
-      networkActivityIndicatorVisible,
-      showHideTransition,
-      backgroundColor,
-      animated
-    } = props;
+    const { style, barStyle, networkActivityIndicatorVisible, showHideTransition, backgroundColor, animated } = props;
     const height = statusBarHeight;
     return (
       <View style={[{ backgroundColor, height }, style]}>
@@ -27,33 +21,16 @@ const StatusBar = props => {
     );
   }
 
-  const { barStyle, translucent, backgroundColor, animated, style } = props;
-  const height = statusBarHeight;
-  if (translucent) {
-    return (
-      <View style={[{ height }, style]}>
-        <RNStatusBar
-          translucent={true}
-          barStyle={barStyle}
-          backgroundColor={backgroundColor}
-          animated={animated}
-        />
-      </View>
-    );
-  }
+  const { barStyle, translucent, backgroundColor, animated } = props;
 
   return (
-    <RNStatusBar
-      barStyle={barStyle}
-      backgroundColor={backgroundColor}
-      animated={animated}
-    />
+    <RNStatusBar translucent={translucent} barStyle={barStyle} backgroundColor={backgroundColor} animated={animated} />
   );
 };
 
 StatusBar.defaultProps = {
   translucent: true,
-  backgroundColor: "white",
+  backgroundColor: isIOS ? "white" : "rgba(0,0,0,0.4)",
   barStyle: "dark-content",
   animated: true
 };
