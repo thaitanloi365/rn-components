@@ -154,6 +154,8 @@ declare module "rn-components" {
     helperStyle?: StyleProp<TextStyle>;
     LeftComponent?: React.ReactElement | React.FunctionComponent;
     RightComponent?: React.ReactElement | React.FunctionComponent;
+    InputAccessoryComponent?: React.ReactElement | React.FunctionComponent;
+    inputAccessoryContainerStyle?: StyleProp<ViewStyle>;
     onPress?: () => void;
   }
 
