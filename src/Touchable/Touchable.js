@@ -6,9 +6,14 @@ const isAndroid = Device.isAndroid();
 const version = Platform.Version;
 
 const TouchableComponent = props => {
-  const { children, ...other } = props;
+  const { children, useForeground, ...other } = props;
   if (isAndroid) {
-    return <TouchableNativeFeedback {...other}>{children}</TouchableNativeFeedback>;
+    const _useForeground = useForeground && TouchableNativeFeedback.canUseNativeForeground();
+    return (
+      <TouchableNativeFeedback {...other} useForeground={_useForeground}>
+        {children}
+      </TouchableNativeFeedback>
+    );
   }
   return <TouchableOpacity {...other}>{children}</TouchableOpacity>;
 };
