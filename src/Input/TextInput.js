@@ -128,7 +128,7 @@ class TextInput extends React.Component {
         backgroundColor: "#EFF0F1",
         borderTopWidth: 1,
         borderTopColor: "rgba(0,0,0,0.1)",
-        paddingVertical: 10
+        paddingVertical: 12
       },
       inputAccessoryContainerStyle
     ];

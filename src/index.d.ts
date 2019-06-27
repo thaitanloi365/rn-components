@@ -196,7 +196,7 @@ declare module "rn-components" {
 
   export class ScrollView extends React.Component<ScrollViewProps, any> {
     scrollToNode(node, offset?: number): void;
-    scrollToCurrentInput(): void;
+    scrollToCurrentInput(offset?: number): void;
   }
 
   export class KeyboardSpacer extends React.Component<KeyboardSpacerProps, any> {}
