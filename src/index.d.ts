@@ -117,6 +117,9 @@ declare module "rn-components" {
     inputStyle?: StyleProp<TextStyle>;
     helperText?: string;
     helperStyle?: StyleProp<TextStyle>;
+    inputAccessoryViewID?: string;
+    InputAccessoryComponent?: React.ReactElement | React.FunctionComponent;
+    inputAccessoryContainerStyle?: StyleProp<ViewStyle>;
   }
   interface StatusBarProps extends RNStatusBarProps {}
 
