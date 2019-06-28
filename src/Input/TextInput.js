@@ -171,7 +171,7 @@ class TextInput extends React.Component {
           />
           {RenderNode(View, RightComponent)}
         </View>
-        {isValidInputAccessoryViewID && (
+        {isValidInputAccessoryViewID && Platform.OS === "ios" && (
           <InputAccessoryView nativeID={inputAccessoryViewID}>
             <View style={inputAccessoryStyle}>{RenderNode(View, InputAccessoryComponent)}</View>
           </InputAccessoryView>
