@@ -117,6 +117,9 @@ declare module "rn-components" {
     inputStyle?: StyleProp<TextStyle>;
     helperText?: string;
     helperStyle?: StyleProp<TextStyle>;
+    inputAccessoryViewID?: string;
+    InputAccessoryComponent?: React.ReactElement | React.FunctionComponent;
+    inputAccessoryContainerStyle?: StyleProp<ViewStyle>;
   }
   interface StatusBarProps extends RNStatusBarProps {}
 
@@ -196,7 +199,7 @@ declare module "rn-components" {
 
   export class ScrollView extends React.Component<ScrollViewProps, any> {
     scrollToNode(node, offset?: number): void;
-    scrollToCurrentInput(): void;
+    scrollToCurrentInput(offset?: number): void;
   }
 
   export class KeyboardSpacer extends React.Component<KeyboardSpacerProps, any> {}

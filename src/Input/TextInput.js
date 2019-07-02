@@ -128,7 +128,7 @@ class TextInput extends React.Component {
         backgroundColor: "#EFF0F1",
         borderTopWidth: 1,
         borderTopColor: "rgba(0,0,0,0.1)",
-        paddingVertical: 10
+        paddingVertical: 12
       },
       inputAccessoryContainerStyle
     ];
@@ -171,7 +171,7 @@ class TextInput extends React.Component {
           />
           {RenderNode(View, RightComponent)}
         </View>
-        {isValidInputAccessoryViewID && (
+        {isValidInputAccessoryViewID && Platform.OS === "ios" && (
           <InputAccessoryView nativeID={inputAccessoryViewID}>
             <View style={inputAccessoryStyle}>{RenderNode(View, InputAccessoryComponent)}</View>
           </InputAccessoryView>

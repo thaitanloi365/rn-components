@@ -89,6 +89,7 @@ export default class App extends Component {
             <Text />
             <TextInput placeholder="input 3" returnKeyLabel="255522" />
             <TextInput placeholder="input 4" returnKeyLabel="2222" />
+            <Textarea style={{ backgroundColor: "gray", height: 120 }} placeholder="input area" returnKeyLabel="2222" />
             <Text />
           </InputGroup>
           <Text />

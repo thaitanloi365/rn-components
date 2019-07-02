@@ -72,9 +72,9 @@ class ScrollView extends React.Component {
     });
   };
 
-  scrollToCurrentInput() {
+  scrollToCurrentInput(offset = 75) {
     const currentlyFocusedField = TextInput.State.currentlyFocusedField();
-    this.scrollToNode(currentlyFocusedField);
+    this.scrollToNode(currentlyFocusedField, offset);
   }
 
   _onContentSizeChange = (w, h) => {
