@@ -3,9 +3,10 @@ import { StatusBar as RNStatusBar, View } from "react-native";
 import Device from "../Utils/Device";
 
 const statusBarHeight = Device.getStatusBarHeight(true);
+const isIOS = Device.isIOS();
 
 const StatusBar = props => {
-  if (Device.isIOS()) {
+  if (isIOS) {
     const { style, barStyle, networkActivityIndicatorVisible, showHideTransition, backgroundColor, animated } = props;
     const height = statusBarHeight;
     return (
@@ -23,7 +24,7 @@ const StatusBar = props => {
   const { barStyle, translucent, backgroundColor, animated, style } = props;
   if (translucent) {
     return (
-      <View style={[{ marginBottom: statusBarHeight }, style]}>
+      <View style={[{ height: statusBarHeight }, style]}>
         <RNStatusBar translucent barStyle={barStyle} backgroundColor={backgroundColor} animated={animated} />
       </View>
     );
