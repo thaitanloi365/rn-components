@@ -97,7 +97,8 @@ class TextInput extends React.Component {
       autoCapitalize,
       inputContainerStyle,
       LeftComponent,
-      RightComponent
+      RightComponent,
+      value
     } = this.props;
 
     const hiddenUnderline = multiline || underlineWidth == 0;
@@ -168,6 +169,7 @@ class TextInput extends React.Component {
             multiline={multiline}
             numberOfLines={numberOfLines}
             scrollEnabled={scrollEnabled}
+            value={value}
           />
           {RenderNode(View, RightComponent)}
         </View>

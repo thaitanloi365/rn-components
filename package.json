@@ -1,6 +1,6 @@
 {
   "name": "rn-components",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React native components base",
   "main": "src/index.js",
   "types": "src/index.d.ts",
